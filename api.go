@@ -76,6 +76,10 @@ func (server *ApiServer) Listen(host string, port string) {
 
 	http.Handle("/", StopBrowsersMiddleware(r))
 
+	logrus.SetFormatter(&logrus.TextFormatter{
+		ForceColors:   false,
+		DisableColors: true})
+
 	logrus.WithFields(logrus.Fields{
 		"host":    host,
 		"port":    port,
